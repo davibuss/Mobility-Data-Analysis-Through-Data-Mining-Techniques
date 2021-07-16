@@ -1,43 +1,41 @@
-//Manhattan Zone
-[bbox : 40.686,-74.064,40.919,-73.753]
-[out:csv(::"id", ::type, ::lat, ::lon,  public_transport, highway, railway, station , historic, amenity, leisure, shop, name; true; "\t")];
+
+[out:csv(::"id", ::type, ::lat, ::lon,  public_transport, highway, railway, station , historic, amenity, leisure, shop,  name; true; "\t")];
+area[name = "Manhattan"]->.a; 
 (
-  node["highway"="bus_stop"](bbox=40.686,-74.064,40.919,-73.753);
-  way["highway"="bus_stop"](bbox=40.686,-74.064,40.919,-73.753);
-  relation["highway"="bus_stop" ](bbox=40.686,-74.064,40.919,-73.753);
- 
-  node["public_transport"="stop_position"](bbox=40.686,-74.064,40.919,-73.753);
-  way["public_transport"="stop_position"](bbox=40.686,-74.064,40.919,-73.753);
-  relation["public_transport"="stop_position"](bbox=40.686,-74.064,40.919,-73.753);
   
-  node["railway" = "tram_stop"]
-  (bbox=40.686,-74.064,40.919,-73.753);
-  way["railway"="tram_stop"](bbox=40.686,-74.064,40.919,-73.753);
-  relation["railway"="tram_stop"](bbox=40.686,-74.064,40.919,-73.753);
+  node(area.a)[public_transport = stop_position];
+  way(area.a)[public_transport = stop_position]; 
+  relation(area.a)[public_transport = stop_position];
   
-  node["station" = "subway"]
-  (bbox=40.686,-74.064,40.919,-73.753);
-  way["station"="subway"](bbox=40.686,-74.064,40.919,-73.753);
-  relation["station"="subway"](bbox=40.686,-74.064,40.919,-73.753);
+  node(area.a)[highway=bus_stop];
+  way(area.a)[highway=bus_stop]; 
+  relation(area.a)[highway=bus_stop];
   
-   node["historic"](bbox = 40.686,-74.064,40.919,-73.753);
-  way["historic"](bbox = 40.686,-74.064,40.919,-73.753);
-  relation["historic"](bbox = 40.686,-74.064,40.919,-73.753);
+  node(area.a)[railway=tram_stop];
+  way(area.a)[railway=tram_stop]; 
+  relation(area.a)[railway=tram_stop];
   
-  node["amenity"](bbox = 40.686,-74.064,40.919,-73.753);
-  way["amenity"](bbox = 40.686,-74.064,40.919,-73.753);
-  relation["amenity"](bbox = 40.686,-74.064,40.919,-73.753);
-   node["amenity"](bbox = 40.686,-74.064,40.919,-73.753);
+  node(area.a)[station = subway];
+  way(area.a)[station = subway]; 
+  relation(area.a)[station = subway];
   
-   node["leisure"](bbox = 40.686,-74.064,40.919,-73.753);
-  way["leisure"](bbox = 40.686,-74.064,40.919,-73.753);
-  relation["leisure"](bbox = 40.686,-74.064,40.919,-73.753);
-  node["shop"](bbox = 40.686,-74.064,40.919,-73.753);
-  way["shop"](bbox = 40.686,-74.064,40.919,-73.753);
-  relation["shop"](bbox = 40.686,-74.064,40.919,-73.753);
+  node(area.a)[historic];
+  way(area.a)[historic]; 
+  relation(area.a)[historic];
   
+  node(area.a)[amenity];
+  way(area.a)[amenity]; 
+  relation(area.a)[amenity];
   
-  );
+  node(area.a)[leisure];
+  way(area.a)[leisure]; 
+  relation(area.a)[leisure];
+  
+  node(area.a)[shop];
+  way(area.a)[shop]; 
+  relation(area.a)[shop]; 
+  
+   );
   
   
 out body;
